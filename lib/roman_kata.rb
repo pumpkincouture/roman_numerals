@@ -8,7 +8,7 @@ class RomanNumerals
 									500 => "D", 1000 => "M"}
 	end
 
-	def convert_to_roman(number)
+	def find_base(number)
 
 	  @numerals_hash.each do |k,v|
 			if k == number
@@ -19,12 +19,12 @@ class RomanNumerals
 	end
 
 	def find_equivalent(number)
-		first_try = convert_to_roman(number)
+		first_try = find_base(number)
 
 		if first_try.is_a? String
 			return false
-		elsif number < 5
-			equiv = number.times{|number| return "I"}
+		elsif number <=3
+			equiv = "I" * number
 			return equiv
 		else
 			return number
