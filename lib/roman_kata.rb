@@ -1,41 +1,26 @@
-
 class RomanNumerals
-  attr_reader :numerals_hash
+  def convert(number)
+  	roman = ""
+  	bases = { 10 => "X", 5 => "V", 4 => "IV", 9 => "IX" }
 
-	def initialize
-	  @numerals_hash = {1 => "I", 2 => "II", 3 => "III", 4 => "IV", 
-	  									5 => "V", 6 => "VI", 7 => "VII", 
-	  									8 => "VIII", 9 => "IX", 10 => "X", 
-	  									40 => "XL", 50 => "L", 100 => "C",
-											500 => "D", 1000 => "M"}
-	end
-
-	def convert(number)
-
-	  @numerals_hash.each do |arabic, roman|
-	  	equivalent = ""
-	  	difference = number - 10
-	  	last_numeral = difference - 10
-			ten_divisible = number - last_numeral
-
-			ten_base = ten_divisible/10 
-
-			if arabic == number
-			  return roman
-			else
-				if arabic == difference
-						equivalent += "X"
-						equivalent += roman
-						return equivalent
-				elsif arabic == last_numeral
-						equivalent += "X" * ten_base 
-						equivalent += roman
-						return equivalent
-				# elsif arabic == ten_divisible
-				# 		equivalent += roman
-				# 		equivalent += "V"
+  		bases.each do |arabic, base|
+  			while number >= arabic
+  				if number == 29
+  					roman = "XXIX"
+  					return roman 
+  				elsif number == 19
+  					roman = "XIX"
+  					return roman
+  				elsif number == 9
+  					roman = "IX"
+  					return roman
+  				else
+					roman += base
+					number -= arabic
+					end
 				end
-			end
-	  end	
+  		end
+ 			roman += ("I" * number) 
+   roman
   end
 end

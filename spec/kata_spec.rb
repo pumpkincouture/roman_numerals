@@ -1,132 +1,97 @@
+require_relative '../lib/roman_kata.rb'
 require_relative 'spec_helper.rb'
+
 
 describe RomanNumerals do
 
-	before :each do
-		@start_convert = RomanNumerals.new
-	end
+  describe "#convert" do
 
-	it "initializes with a hash." do
-	  numerals_hash = {1 => "I", 2 => "II", 3 => "III", 4 => "IV", 
-	  								5 => "V", 6 => "VI", 7 => "VII", 
-	  								8 => "VIII", 9 => "IX", 10 => "X", 40 => "XL", 
-	  								50 => "L", 100 => "C",
-										500 => "D", 1000 => "M"}
-		expect(@start_convert.numerals_hash).to eq(numerals_hash)
-	end
+	  before :each do
+		  @roman_numerals = RomanNumerals.new
+		end
 
-	it "returns equivalent of 10" do
-	  result = "X"
-	  expect(@start_convert.convert(10)).to eq(result)
-	end
+		it "Returns I when passed 1" do
+			expect(@roman_numerals.convert(1)).to eq("I")
+		end
 
-	it "returns equivalent of 1" do
-		result = "I" 
-		expect(@start_convert.convert(1)).to eq(result)
-	end
+		it "Returns II when passed 2" do
+			expect(@roman_numerals.convert(2)).to eq("II")
+		end
 
-	it "returns equivalent of 2" do
-		result = "II"
-		expect(@start_convert.convert(2)).to eq(result)
-	end
+		it "Returns III when passed 3" do
+			expect(@roman_numerals.convert(3)).to eq("III")
+		end
 
-	it "returns equivalent of 3" do
-		result = "III"
-		expect(@start_convert.convert(3)).to eq(result)
-	end
+		it "Returns IV when passed 4" do
+			expect(@roman_numerals.convert(4)).to eq("IV")
+		end
 
-	it "returns equivalent of 4" do
-		result = "IV"
-		expect(@start_convert.convert(4)).to eq(result)
-	end
+		it "Returns V when passed 5" do
+			expect(@roman_numerals.convert(5)).to eq("V")
+		end
 
-	it "returns equivalent of 5" do
-		result = "V"
-		expect(@start_convert.convert(5)).to eq(result)
-	end
+		it "Returns VI when passed 6" do
+			expect(@roman_numerals.convert(6)).to eq("VI")
+		end
 
-	it "returns equivalent of 6" do
-		result = "VI"
-		expect(@start_convert.convert(6)).to eq(result)
-	end
+		it "Returns VII when passed 7" do
+			expect(@roman_numerals.convert(7)).to eq("VII")
+		end
 
-	it "returns roman equivalent of 7" do
-		result = "VII"
-		expect(@start_convert.convert(7)).to eq(result)
-	end
+		it "Returns VIII when passed 8" do
+			expect(@roman_numerals.convert(8)).to eq("VIII")
+		end
 
-	it "returns roman equivalent of 8" do
-		result = "VIII"
-		expect(@start_convert.convert(8)).to eq(result)
-	end
+		it "Returns IX when passed 9" do
+			expect(@roman_numerals.convert(9)).to eq("IX")
+		end
 
-	it "returns roman equivalent of 12" do
-		result = "XII"
-		expect(@start_convert.convert(12)).to eq(result)
-	end
+		it "Returns X when passed 10" do
+			expect(@roman_numerals.convert(10)).to eq("X")
+		end
 
-	it "returns roman equivalent of 13" do
-		result = "XIII"
-		expect(@start_convert.convert(13)).to eq(result)
-	end
+		it "Returns XI when passed 11" do
+			expect(@roman_numerals.convert(11)).to eq("XI")
+		end
 
-	it "returns roman equivalent of 14" do
-		result = "XIV"
-		expect(@start_convert.convert(14)).to eq(result)
-	end
+		it "Returns XII when passed 12" do
+			expect(@roman_numerals.convert(12)).to eq("XII")
+		end
 
-	it "returns roman equivalent of 15" do
-		result = "XV"
-		expect(@start_convert.convert(15)).to eq(result)
-	end
+		it "Returns XIII when passed 13" do
+			expect(@roman_numerals.convert(13)).to eq("XIII")
+		end
 
-	it "returns roman equivalent of 19" do
-		result = "XIX"
-		expect(@start_convert.convert(19)).to eq(result)
-	end
+		it "Returns XIV when passed 14" do
+			expect(@roman_numerals.convert(14)).to eq("XIV")
+		end
 
-	it "returns roman equivalent of 20" do
-		result = "XX"
-		expect(@start_convert.convert(20)).to eq(result)
-	end
+		it "Returns XV when passed 15" do
+			expect(@roman_numerals.convert(15)).to eq("XV")
+		end
 
-	it "returns roman equivalent of 22" do
-		result = "XXII"
-		expect(@start_convert.convert(22)).to eq(result)
-	end
+		it "Returns XIX when passed 19" do
+			expect(@roman_numerals.convert(19)).to eq("XIX")
+		end
 
-	it "returns roman equivalent of 23" do
-		result = "XXIII"
-		expect(@start_convert.convert(23)).to eq(result)
-	end
+		it "Returns XX when passed 20" do
+			expect(@roman_numerals.convert(20)).to eq("XX")
+		end
 
-	it "returns roman equivalent of 24" do
-		result = "XXIV"
-		expect(@start_convert.convert(24)).to eq(result)
-	end
+		it "Returns XXI when passed 21" do
+			expect(@roman_numerals.convert(21)).to eq("XXI")
+		end
 
-	it "returns roman equivalent of 25" do
-		result = "XXV"
-		expect(@start_convert.convert(25)).to eq(result)
-	end
+		it "Returns XXIV when passed 24" do
+			expect(@roman_numerals.convert(24)).to eq("XXIV")
+		end
 
-	it "returns roman equivalent of 30" do
-		result = "XXX"
-		expect(@start_convert.convert(30)).to eq(result)
-	end
+		it "Returns XXV when passed 25" do
+			expect(@roman_numerals.convert(25)).to eq("XXV")
+		end
 
-	it "returns roman equivant of 35" do
-		result = "XXV"
-		expect(@start_convert.convert(35)).to eq(result)
-	end
-	
-	it "returns roman equivalent of 40" do
-		result = "XL"
-		expect(@start_convert.convert(40)).to eq(result)
-	end
-
-	it "returns roman equivalent of 45" do
-		result = "XLV"
-		expect(@start_convert.convert(45)).to eq(result)
+		it "Returns XXIX when passed 29" do
+			expect(@roman_numerals.convert(29)).to eq("XXIX")
+		end
 	end
 end
