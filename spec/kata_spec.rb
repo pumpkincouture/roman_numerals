@@ -93,5 +93,17 @@ describe RomanNumerals do
 		it "Returns XXIX when passed 29" do
 			expect(@roman_numerals.convert(29)).to eq("XXIX")
 		end
+
+		it "Returns XL when passed 40" do
+			expect(@roman_numerals.convert(40)).to eq("XL")
+		end
+
+		it "Returns XLV when passed 45" do
+			expect(@roman_numerals.convert(45)).to eq("XLV")
+		end
+
+		it "Returns MCMXCIX when passed 1999" do
+			expect(@roman_numerals.convert(1999)).to eq("MCMXCIX")
+		end
 	end
 end
