@@ -1,34 +1,15 @@
-
 class RomanNumerals
-  attr_reader :numerals_hash
 
-	def initialize
-	  @numerals_hash = {1 => "I", 5 => "V", 
-									10 => "X", 50 => "L", 100 => "C",
-									500 => "D", 1000 => "M"}
-	end
+  def convert(number)
+    roman = ""
+    roman_hash = {1000 => "M", 900 => "CM", 500 => "D", 400 => "CD", 100 => "C", 90 => "XC", 50 => "L", 40 => "XL", 10 => "X", 9 => "IX", 5 => "V", 4 => "IV", 1 => "I"}
 
-	def find_base(number)
-
-	  @numerals_hash.each do |k,v|
-			if k == number
-			return v
-			end
-		end
-		return number
-	end
-
-	def find_equivalent(number)
-		first_try = find_base(number)
-
-		if first_try.is_a? String
-			return false
-		elsif number <=3
-			equiv = "I" * number
-			return equiv
-		else
-			return number
-		end
-	end	
-
+    roman_hash.each do |arabic, base|
+      while number >= arabic
+        roman += base
+        number -= arabic
+      end
+    end
+    roman
+  end
 end

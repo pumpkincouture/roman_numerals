@@ -1,25 +1,83 @@
+require_relative '../lib/roman_kata.rb'
 require_relative 'spec_helper.rb'
+
 
 describe RomanNumerals do
 
-	before :each do
-		@start_convert = RomanNumerals.new
-	end
+  describe "#convert" do
 
-	it "initializes with a hash." do
-	  numerals_hash = {1 => "I", 5 => "V", 10 => "X", 50 => "L", 100 => "C", 500 => "D", 1000 => "M"}
-		expect(@start_convert.numerals_hash).to eq(numerals_hash)
-	end
+  	before :each do
+  		@roman_numerals = RomanNumerals.new
+  	end
 
-	it "takes a number as an argument and finds the equivalent within the numerals hash" do
-	  numerals_hash = {1 => "I", 5 => "V", 10 => "X", 50 => "L", 100 => "C", 500 => "D", 1000 => "M"}
-	  result = "X"
-	  expect(@start_convert.find_base(10)).to eq(result)
-	end
+ it "returns I" do
+ 	expect(@roman_numerals.convert(1)).to eq("I")
+ end
 
-	it "tries to find the equivalent of the number that the first method did not find" do
-		numerals_hash = {1 => "I", 5 => "V", 10 => "X", 50 => "L", 100 => "C", 500 => "D", 1000 => "M"}
-		result = "III" 
-		expect(@start_convert.find_equivalent(3)).to eq(result)
-	end
+ it "returns II" do
+ 	expect(@roman_numerals.convert(2)).to eq("II")
+ end
+
+ it "returns III" do
+ 	expect(@roman_numerals.convert(3)).to eq("III")
+ end
+
+ it "returns IV" do
+ 	expect(@roman_numerals.convert(4)).to eq("IV")
+ end
+
+ it "returns V" do
+ 	expect(@roman_numerals.convert(5)).to eq("V")
+ end
+
+ it "returns VI" do
+ 	expect(@roman_numerals.convert(6)).to eq("VI")
+ end
+
+ it "returns IX" do
+ 	expect(@roman_numerals.convert(9)).to eq("IX")
+ end
+
+ it "returns X" do
+ 	expect(@roman_numerals.convert(10)).to eq("X")
+ end
+
+ it "returns XL" do
+ 	expect(@roman_numerals.convert(40)).to eq("XL")
+ end
+
+ it "returns L" do
+ 	expect(@roman_numerals.convert(50)).to eq("L")
+ end
+
+ it "returns XC" do
+ 	expect(@roman_numerals.convert(90)).to eq("XC")
+ end
+
+ it "returns C" do
+ 	expect(@roman_numerals.convert(100)).to eq("C")
+ end
+
+ it "returns CD" do
+ 	expect(@roman_numerals.convert(400)).to eq("CD")
+ end
+
+ it "returns D" do
+ 	expect(@roman_numerals.convert(500)).to eq("D")
+ end
+
+ it "returns CM" do
+ 	expect(@roman_numerals.convert(900)).to eq("CM")
+ end
+
+ it "returns M" do
+ 	expect(@roman_numerals.convert(1000)).to eq("M")
+ end
+
+ it "returns MMM" do
+ 	expect(@roman_numerals.convert(3000)).to eq("MMM")
+ end
 end
+end
+
+		
